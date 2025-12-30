@@ -6,7 +6,12 @@ import { useSearchParams } from 'next/navigation'
 export default function inner_nav_item({title, param}) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const SearchParams = useSearchParams();
-    const genre = SearchParams.get('genre');
+    let genre = SearchParams.get('genre');
+    
+    if(!genre){
+      genre = 'popular'
+    }
+    
   return (
     <div>
         <Link href={`/?genre=${param}`} 
